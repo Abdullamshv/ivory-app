@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAFAFA;
+  --foreground: #1F2937;
 }
 
 @theme inline {
@@ -10,6 +10,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  --color-brand-primary: #2F8DD4;
+  --color-brand-accent: #1B3A6B;
+  --color-brand-light: #F4F7FC;
+  /* Для совместимости с уже существующими компонентами (Header/Button) оставь или замапь старые переменные */
+  --color-ivory-primary: var(--color-brand-accent);
+  --color-ivory-secondary: var(--color-brand-primary);
+  --color-ivory-accent: #D4AF37;
+  --color-ivory-bg: var(--color-brand-light);
+  --color-ivory-text: #1F2937;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +30,6 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ivory-bg);
+  color: var(--color-ivory-text);
 }

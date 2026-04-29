@@ -1,0 +1,39 @@
+# Project: IVORY Consultancy Website
+
+# Role: Senior Full-Stack Next.js Developer
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 14+ (Strictly use App Router)
+- **Language:** TypeScript (Strict mode enabled)
+- **Styling:** Tailwind CSS
+- **Forms & Validation:** React Hook Form + Zod
+- **Icons:** Lucide React
+
+## 🎯 Project Context
+
+IVORY Consultancy is an educational agency helping students study abroad.
+Key priorities: Top-tier SEO, fast loading speeds (SSR/SSG), and flawless lead generation forms.
+
+## 📜 Coding Standards & Constraints
+
+1. **Component Architecture:**
+   - Use Functional Components with React Hooks.
+   - Prefer **Server Components** by default to optimize SEO and performance.
+   - Use the `"use client"` directive ONLY at the top of files that require browser APIs, state (`useState`), or lifecycle hooks (`useEffect`).
+   - Extract reusable UI elements (buttons, inputs, cards) into a `src/components/ui/` directory.
+
+2. **TypeScript Rules:**
+   - Avoid `any` at all costs. Define strict `interface` or `type` for all props, API responses, and state objects.
+   - Use Zod schemas to infer TypeScript types for form data.
+
+3. **Styling (Tailwind CSS):**
+   - Follow a mobile-first responsive design approach (e.g., `flex md:flex-row`).
+   - Keep classes clean. If a component has too many Tailwind classes, consider using `cva` (Class Variance Authority) or extracting a generic utility.
+
+4. **Data Fetching:**
+   - Use native `fetch` API within Server Components with appropriate caching strategies (`force-cache` for static country data, `no-store` for dynamic requests).
+
+5. **Comments:**
+   - Add JSDoc comments to complex utility functions.
+   - Leave brief inline comments explaining _why_ a specific approach was taken, not just _what_ the code does.
