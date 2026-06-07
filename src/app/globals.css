@@ -10,7 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  
+
   --color-brand-primary: #2F8DD4;
   --color-brand-accent: #1B3A6B;
   --color-brand-light: #F4F7FC;
@@ -20,16 +20,96 @@
   --color-ivory-accent: #D4AF37;
   --color-ivory-bg: var(--color-brand-light);
   --color-ivory-text: #1F2937;
+
+  /* Radius scale */
+  --radius-card: 1rem;
+  --radius-2xl-soft: 1.5rem;
+
+  /* Brand shadows */
+  --shadow-brand: 0 10px 30px -12px rgba(27, 58, 107, 0.25);
+  --shadow-brand-lg: 0 20px 50px -15px rgba(27, 58, 107, 0.35);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--color-ivory-bg);
   color: var(--color-ivory-text);
+}
+
+@layer utilities {
+  /* Dark blue gradient overlay for hero / media bands */
+  .bg-hero-gradient {
+    background-image: linear-gradient(
+      to top,
+      rgba(15, 23, 42, 0.85) 0%,
+      rgba(27, 58, 107, 0.55) 45%,
+      rgba(27, 58, 107, 0.25) 100%
+    );
+  }
+
+  /* Gradient brand text (primary -> gold) */
+  .text-gradient-brand {
+    background: linear-gradient(90deg, var(--color-brand-primary), var(--color-ivory-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* ---- Scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-up {
+  transform: translateY(28px);
+}
+.reveal-fade {
+  transform: none;
+}
+.reveal-left {
+  transform: translateX(-28px);
+}
+.reveal-right {
+  transform: translateX(28px);
+}
+.reveal-show {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Hero scroll indicator ---- */
+@keyframes hero-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+.animate-hero-bounce {
+  animation: hero-bounce 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-hero-bounce {
+    animation: none;
+  }
 }

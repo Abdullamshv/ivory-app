@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Mail, ChevronDown, Menu, X } from "lucide-react";
 import { FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
 import { useState } from "react";
+import { OFFICE_INFO } from "@/data";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -11,12 +12,12 @@ export default function Header() {
   const closeMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-ivory-bg/95 backdrop-blur supports-[backdrop-filter]:bg-ivory-bg/60">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-ivory-bg/95 backdrop-blur supports-backdrop-filter:bg-ivory-bg/60">
       <div className="flex h-20 items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Left: Logo */}
         <Link href="/" onClick={closeMenu}>
-          <span className="font-heading text-2xl font-bold text-ivory-primary tracking-tight font-serif">
+          <span className="text-2xl font-bold text-ivory-primary tracking-tight font-serif">
             IVORY
           </span>
         </Link>
@@ -38,7 +39,7 @@ export default function Header() {
             <Link href="/study-destinations" className="flex items-center gap-1 hover:text-ivory-primary transition-colors py-8">
               Study Destinations <ChevronDown className="h-4 w-4" />
             </Link>
-            <ul className="absolute left-0 top-full mt-0 w-48 flex-col overflow-hidden rounded-md border border-gray-100 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <ul className="absolute left-0 top-full mt-0 w-48 flex-col overflow-hidden rounded-md border border-gray-100 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200">
               <li><Link href="/study-destinations/georgia" className="block px-4 py-3 hover:bg-zinc-50 hover:text-ivory-primary transition-colors">Georgia</Link></li>
               <li><Link href="/study-destinations/uae" className="block px-4 py-3 hover:bg-zinc-50 hover:text-ivory-primary transition-colors">UAE</Link></li>
               <li><Link href="/study-destinations/malaysia" className="block px-4 py-3 hover:bg-zinc-50 hover:text-ivory-primary transition-colors">Malaysia</Link></li>
@@ -52,7 +53,7 @@ export default function Header() {
         {/* Right: Social Links (Desktop) & Hamburger (Mobile) */}
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-4">
-            <a href="mailto:contact@ivory.com" target="_blank" rel="noopener noreferrer" className="text-ivory-text hover:text-ivory-secondary transition-colors" aria-label="Email"><Mail className="w-5 h-5" /></a>
+            <a href={`mailto:${OFFICE_INFO.email}`} className="text-ivory-text hover:text-ivory-secondary transition-colors" aria-label="Email"><Mail className="w-5 h-5" /></a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-ivory-text hover:text-ivory-secondary transition-colors" aria-label="LinkedIn"><FaLinkedin className="w-5 h-5" /></a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-ivory-text hover:text-ivory-secondary transition-colors" aria-label="Instagram"><FaInstagram className="w-5 h-5" /></a>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-ivory-text hover:text-ivory-secondary transition-colors" aria-label="Facebook"><FaFacebook className="w-5 h-5" /></a>
